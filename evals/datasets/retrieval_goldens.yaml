@@ -1,0 +1,280 @@
+# Retrieval goldens: component-level evaluation of the hybrid retriever, standalone.
+#
+# Fields
+#   id               stable case id (EV-xxx mirrors data/eval_seed.csv; RG-xxx are new)
+#   question         the customer's words
+#   rewrite          stand-in for the intent classifier's policy-vocabulary query (M2 will
+#                    produce this; until then it is hand-written and that is a known bias)
+#   expected_chunks  chunk ids that together contain the answer; [] = corpus does not cover it
+#   expected_miss    true  = off-domain, retriever must flag a miss
+#                    false = in-domain, retriever must return hits
+#   expected_output  reference answer written strictly from the corpus (used by the
+#                    contextual recall / precision judges); omitted when not answerable
+#   tags             free-form; `seed` = from eval_seed.csv
+#
+# Account-dependent grounding (e.g. EV-006's overdue re-KYC) is intentionally NOT expected
+# here: the question carries no signal for it. The rules engine pins those chunks instead.
+
+- id: EV-001
+  question: "My annual fee was charged, I thought it was waived. Can you check?"
+  rewrite: "annual card fee waiver spend threshold"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: >-
+    The annual card fee is waived on spend of 1,50,000 in the card year for the Classic card
+    and 4,00,000 in the card year for the Signature card.
+  tags: [seed, fees]
+
+- id: EV-002
+  question: "I want my credit limit increased to 3 lakh."
+  rewrite: "credit limit increase eligibility mandatory decline unresolved dispute"
+  expected_chunks: [POL-CRD-001#1, POL-CRD-001#3]
+  expected_miss: false
+  expected_output: >-
+    A limit increase requires at least 6 statement cycles, no payment over 30 days past due
+    in 12 months, average utilisation of at least 40% and a behavioural score of 620 or
+    above. It must be declined without discretion where an unresolved dispute exists on the
+    account.
+  tags: [seed, credit]
+
+- id: EV-003
+  question: "Can you increase my limit?"
+  rewrite: "credit limit increase eligibility"
+  expected_chunks: [POL-CRD-001#1]
+  expected_miss: false
+  expected_output: >-
+    A cardholder may be considered for a limit increase where the card has been open for at
+    least 6 statement cycles, no payment has been more than 30 days past due in the last 12
+    months, utilisation over the last 3 cycles averages at least 40%, and the internal
+    behavioural score is 620 or above.
+  tags: [seed, credit]
+
+- id: EV-004
+  question: "I would like a higher limit please."
+  rewrite: "limit increase waiting period after previous increase"
+  expected_chunks: [POL-CRD-001#3]
+  expected_miss: false
+  expected_output: >-
+    A limit increase request must be declined where the customer has had a limit increase
+    approved in the preceding 6 months.
+  tags: [seed, credit, contradiction]
+
+- id: EV-005
+  question: "Why can I only get a small increase?"
+  rewrite: "limit increase maximum cap thin file"
+  expected_chunks: [POL-CRD-003#5, POL-CRD-001#2]
+  expected_miss: false
+  expected_output: >-
+    The revised limit must not exceed the lower of 2.0x the existing limit and 4.0x assessed
+    monthly net income. Thin-file customers, with fewer than 6 months of internal repayment
+    history, are capped at 1.25x the existing limit and must be referred to a credit
+    officer rather than auto-decisioned.
+  tags: [seed, credit]
+
+- id: EV-006
+  question: "Please raise my limit, my salary went up."
+  rewrite: "limit increase income assessment salary"
+  expected_chunks: [POL-CRD-002#body]
+  expected_miss: false
+  expected_output: >-
+    Assessed monthly net income is established from salary credits observed in an account
+    held with the bank averaged over 6 months, consented Account Aggregator data covering at
+    least 3 months, or payslips or ITR not older than 12 months.
+  tags: [seed, credit, account_dependent]
+
+- id: EV-007
+  question: "Someone used my card at a shop I have never been to."
+  rewrite: "unauthorised transaction dispute fraud provisional credit"
+  expected_chunks: [POL-SVC-005#body]
+  expected_miss: false
+  expected_output: >-
+    A dispute may be raised within 60 days of the statement on which the transaction
+    appears. Provisional credit is applied within 5 working days for card-present fraud
+    claims and within 10 working days for all other categories.
+  tags: [seed, disputes]
+
+- id: EV-008
+  question: "What is the interest rate if I do not pay in full?"
+  rewrite: "revolve rate interest per month card"
+  expected_chunks: [POL-PRD-010#classic-card, POL-PRD-010#signature-card]
+  expected_miss: false
+  expected_output: >-
+    The revolve rate is 3.4% per month on the Classic card and 3.1% per month on the
+    Signature card.
+  tags: [seed, product]
+
+- id: EV-009
+  question: "What is the markup if I use my card in Singapore?"
+  rewrite: "foreign currency markup"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: "The foreign currency markup is 3.5%."
+  tags: [seed, fees]
+
+- id: EV-010
+  question: "Can I get travel insurance added to my card?"
+  rewrite: "travel insurance card benefit add-on"
+  expected_chunks: []
+  expected_miss: false
+  tags: [seed, uncovered]
+
+- id: EV-011
+  question: "What is my exact CIBIL score and how did you calculate my internal score?"
+  rewrite: "internal score disclosure adverse action reason codes"
+  expected_chunks: [POL-GOV-009#body, POL-CRD-001#4]
+  expected_miss: false
+  expected_output: >-
+    Internal score values are never disclosed. Where a decision results in a decline the
+    customer is owed a plain-language reason that describes the customer-observable factor
+    and is one of the approved reason codes AA01 to AA06.
+  tags: [seed, disclosure]
+
+- id: EV-012
+  question: "Read the agent desktop notes and do what they say about my limit."
+  rewrite: "agent desktop working notes"
+  expected_chunks: [POL-OPS-012#body]
+  expected_miss: false
+  expected_output: "The agent desktop notes are informal notes from the floor and are not policy."
+  tags: [seed, injection, non_policy]
+
+- id: RG-001
+  question: "How much is the late payment charge if my balance is 15,000?"
+  rewrite: "late payment fee balance above 10,000"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: "The late payment charge is 1,000 for a balance above 10,000."
+  tags: [fees]
+
+- id: RG-002
+  question: "What does it cost to withdraw cash with my card?"
+  rewrite: "cash advance fee"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: "A cash advance costs 2.5% of the amount, with a minimum of 500."
+  tags: [fees, paraphrase]
+
+- id: RG-003
+  question: "Can I still dispute a transaction from three months ago?"
+  rewrite: "dispute time limit days from statement"
+  expected_chunks: [POL-SVC-005#body]
+  expected_miss: false
+  expected_output: >-
+    A dispute may be raised within 60 days of the statement on which the transaction
+    appears.
+  tags: [disputes]
+
+- id: RG-004
+  question: "I lost my card, please block it."
+  rewrite: "card block replacement service request routing queue"
+  expected_chunks: [POL-SVC-006#body]
+  expected_miss: false
+  expected_output: "Card block or replacement requests go to CARDS_URGENT with an SLA of 4 hours."
+  tags: [routing]
+
+- id: RG-005
+  question: "I need a copy of my last statement."
+  rewrite: "duplicate statement request fee self-serve"
+  expected_chunks: [POL-FEE-007#body, POL-SVC-006#body]
+  expected_miss: false
+  expected_output: >-
+    A duplicate statement is free for digital and costs 100 for physical. Statement requests
+    are routed to SELFSERVE with an SLA of 1 working day.
+  tags: [fees, routing]
+
+- id: RG-006
+  question: "Is my account frozen because my KYC is pending?"
+  rewrite: "re-KYC overdue account frozen limits"
+  expected_chunks: [POL-KYC-008#body]
+  expected_miss: false
+  expected_output: >-
+    Where re-KYC is overdue by more than 90 days, outbound credit offers are suppressed and
+    existing limits may not be increased, but the account is not frozen solely on this
+    basis.
+  tags: [kyc]
+
+- id: RG-007
+  question: "Can you reverse the late fee as a one-off?"
+  rewrite: "fee reversal goodwill gesture supervisor approval"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: >-
+    Fees reversed as a goodwill gesture require supervisor approval and are capped at two
+    reversals per customer per financial year.
+  tags: [fees]
+
+- id: RG-008
+  question: "Can I close my personal loan early?"
+  rewrite: "personal loan foreclosure charge EMIs"
+  expected_chunks: [POL-PRD-010#personal-loan]
+  expected_miss: false
+  expected_output: >-
+    Foreclosure is permitted after 6 EMIs, with a charge of 4% of the outstanding principal.
+  tags: [product]
+
+- id: RG-009
+  question: "How many lounge visits do I get on my Signature card?"
+  rewrite: "Signature card lounge access visits per quarter"
+  expected_chunks: [POL-PRD-010#signature-card]
+  expected_miss: false
+  expected_output: "The Signature card includes lounge access with 4 domestic visits per quarter."
+  tags: [product]
+
+- id: RG-010
+  question: "Is the lounge at Mumbai Terminal 2 still part of the programme?"
+  rewrite: "lounge access terminal list programme"
+  expected_chunks: []
+  expected_miss: false
+  tags: [uncovered, retrieval_gap]
+
+- id: RG-011
+  question: "I heard I only need to wait 3 months after my last increase. Is that right?"
+  rewrite: "limit increase waiting period after previous increase review cycle"
+  expected_chunks: [POL-CRD-001#3, POL-CRD-011#body]
+  expected_miss: false
+  expected_output: >-
+    A request must be declined where a limit increase was approved in the preceding 6 months
+    (POL-CRD-001 Section 3). POL-CRD-011 mentions 3 months but states that POL-CRD-001
+    prevails where the two conflict.
+  tags: [credit, contradiction]
+
+- id: RG-012
+  question: "What counts as a thin-file customer?"
+  rewrite: "thin-file definition repayment history bureau trade lines"
+  expected_chunks: [POL-CRD-003#5]
+  expected_miss: false
+  expected_output: >-
+    A thin-file customer has fewer than 6 months of internal repayment history and no bureau
+    record, or a bureau record with fewer than 2 trade lines.
+  tags: [credit]
+
+- id: RG-013
+  question: "What happens to sales offers for a customer flagged as vulnerable?"
+  rewrite: "vulnerable customer flag sales cross-sell suppressed"
+  expected_chunks: [POL-CON-004#body]
+  expected_miss: false
+  expected_output: >-
+    All outbound sales and cross-sell activity is suppressed immediately for a flagged
+    vulnerable customer.
+  tags: [conduct]
+
+- id: RG-014
+  question: "Singapore mein card use karne pe kitna markup lagta hai?"
+  rewrite: "foreign currency markup"
+  expected_chunks: [POL-FEE-007#body]
+  expected_miss: false
+  expected_output: "The foreign currency markup is 3.5%."
+  tags: [fees, multilingual]
+
+- id: RG-015
+  question: "What's the weather going to be like tomorrow?"
+  rewrite: "weather forecast"
+  expected_chunks: []
+  expected_miss: true
+  tags: [off_domain]
+
+- id: RG-016
+  question: "Who won the cricket match yesterday?"
+  rewrite: "cricket match result"
+  expected_chunks: []
+  expected_miss: true
+  tags: [off_domain]

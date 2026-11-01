@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (lint, types, tests, offline evals)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          enable-cache: true
+      - name: Cache the embedding model
+        uses: actions/cache@v4
+        with:
+          path: backend/.cache
+          key: embeddings-${{ hashFiles('backend/src/grounded_agent/config/settings.py') }}
+      - name: Install
+        run: cd backend && uv sync --all-groups --frozen
+      - name: Lint and format
+        run: |
+          uv run --project backend ruff check backend/src backend/tests evals
+          uv run --project backend ruff format --check backend/src backend/tests evals
+      - name: Types
+        run: cd backend && uv run mypy src
+      - name: Backend tests (scripted LLM, no keys)
+        run: cd backend && uv run pytest -q
+      # Includes the retrieval eval GATE (28 goldens; recall, rank and miss-detection thresholds in
+      # evals/component/retrieval/gates.py), which needs no keys, plus tests of the goldens, metrics
+      # and harness. The live-model application gate is the eval-gate job below.
+      - name: Eval gate (retrieval) and eval-code tests, no keys
+        run: uv run --project backend pytest evals -q
+
+  frontend:
+    name: Frontend (lint, types, tests, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc -b --noEmit
+      - run: npm test
+      - run: npm run build
+
+  hygiene:
+    name: Hygiene (no private hosts, keys or local files)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: scripts/hygiene.sh
+
+  # Runs the application eval against live models and fails on a hard gate (SPEC 8.3).
+  # It needs model keys: without them the job reports that it was skipped instead of passing
+  # silently. Only on main and manual runs, because a full run takes minutes and costs money.
+  eval-gate:
+    name: Eval gate (live models)
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: [backend]
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+      LLM_PRIMARY_MODEL: ${{ vars.LLM_PRIMARY_MODEL }}
+      LLM_FALLBACK_MODEL: ${{ vars.LLM_FALLBACK_MODEL }}
+      LLM_JUDGE_MODEL: ${{ vars.LLM_JUDGE_MODEL }}
+      LLM_REASONING_EFFORT: ${{ vars.LLM_REASONING_EFFORT }}
+    steps:
+      - name: Check for model keys
+        id: keys
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Eval gate SKIPPED::OPENAI_API_KEY is not configured, so the application eval did not run and nothing was gated."
+            echo "### Eval gate SKIPPED: no OPENAI_API_KEY secret configured" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v6
+        if: steps.keys.outputs.run == 'true'
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        if: steps.keys.outputs.run == 'true'
+        with:
+          enable-cache: true
+      - name: Cache the embedding model
+        if: steps.keys.outputs.run == 'true'
+        uses: actions/cache@v4
+        with:
+          path: backend/.cache
+          key: embeddings-${{ hashFiles('backend/src/grounded_agent/config/settings.py') }}
+      - name: Install
+        if: steps.keys.outputs.run == 'true'
+        run: cd backend && uv sync --all-groups --frozen
+      - name: Application eval (fails on a hard gate)
+        if: steps.keys.outputs.run == 'true'
+        run: make eval-application ARGS="--gate"
+      - name: Show the report
+        if: always() && steps.keys.outputs.run == 'true'
+        run: cat evals/reports/application/report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Upload the report
+        if: always() && steps.keys.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-reports
+          path: evals/reports

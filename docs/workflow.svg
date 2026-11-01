@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1780 718" width="1780" height="718" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" role="img" aria-label="The agent workflow, drawn from the compiled graph">
+<rect width="1780" height="718" fill="#F4F7F8"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15202B"/></marker></defs>
+<text x="45" y="36" font-size="22" font-weight="600" fill="#15202B">How one question travels through the agent</text>
+<rect x="68" y="62" width="104" height="28" rx="14" fill="#fff" stroke="#60717E"/><text x="120" y="81" font-size="13" text-anchor="middle" fill="#15202B">message in</text>
+<rect x="1588" y="62" width="104" height="28" rx="14" fill="#fff" stroke="#60717E"/><text x="1640" y="81" font-size="13" text-anchor="middle" fill="#15202B">reply out</text>
+<path d="M120,90 L120,130" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M195,159 L235,159" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M100,188 L255,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M385,159 L425,159" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M310,188 L310,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M575,159 L615,159" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M490,188 L365,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M765,159 L805,159" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<path d="M690,188 L690,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<text x="698" y="262" font-size="12" font-style="italic" text-anchor="start" fill="#60717E">banking question, nothing relevant</text>
+<path d="M955,159 L995,159" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1145,159 L1185,159" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1335,159 L1375,159" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<text x="1355" y="147" font-size="12" font-style="italic" text-anchor="middle" fill="#60717E">pass</text>
+<path d="M1230,188 L1215,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<text x="1204" y="262" font-size="12" font-style="italic" text-anchor="end" fill="#60717E">send back once</text>
+<path d="M1245,310 L1260,188" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="1262" y="262" font-size="12" font-style="italic" text-anchor="start" fill="#60717E">re-check</text>
+<path d="M1290,188 L1365,310" fill="none" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<text x="1344" y="230" font-size="12" font-style="italic" text-anchor="start" fill="#60717E">fails again</text>
+<path d="M1440,339 L1470,339 L1470,188" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M690,368 L690,440 L1500,440 L1500,188" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="1090" y="432" font-size="12" font-style="italic" text-anchor="middle" fill="#60717E">hand to a person: a request is raised</text>
+<path d="M310,368 L310,530 L1640,530 L1640,188" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="1000" y="522" font-size="12" font-style="italic" text-anchor="middle" fill="#60717E">reply goes out as is</text>
+<path d="M1525,159 L1565,159" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1640,130 L1640,90" fill="none" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="45" y="130" width="150" height="58" rx="8" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.8"/><text x="120" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">input_guard</text><text x="120" y="174" font-size="12" text-anchor="middle" fill="#60717E">door guard</text>
+<rect x="235" y="130" width="150" height="58" rx="8" fill="#FBF1DC" stroke="#9A6200" stroke-width="1.8"/><text x="310" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">classify</text><text x="310" y="174" font-size="12" text-anchor="middle" fill="#60717E">scope + intent</text>
+<rect x="425" y="130" width="150" height="58" rx="8" fill="#E9EFF5" stroke="#17324D" stroke-width="1.8"/><text x="500" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">load_account</text><text x="500" y="174" font-size="12" text-anchor="middle" fill="#60717E">fetch the account</text>
+<rect x="615" y="130" width="150" height="58" rx="8" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.8"/><text x="690" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">retrieve</text><text x="690" y="174" font-size="12" text-anchor="middle" fill="#60717E">find policy pages</text>
+<rect x="805" y="130" width="150" height="58" rx="8" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.8"/><text x="880" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">policy</text><text x="880" y="174" font-size="12" text-anchor="middle" fill="#60717E">rules engine</text>
+<rect x="995" y="130" width="150" height="58" rx="8" fill="#FBF1DC" stroke="#9A6200" stroke-width="1.8"/><text x="1070" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">generate</text><text x="1070" y="174" font-size="12" text-anchor="middle" fill="#60717E">write the reply</text>
+<rect x="1185" y="130" width="150" height="58" rx="8" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.8"/><text x="1260" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">validate</text><text x="1260" y="174" font-size="12" text-anchor="middle" fill="#60717E">citations + guards</text>
+<rect x="1375" y="130" width="150" height="58" rx="8" fill="#E9EFF5" stroke="#17324D" stroke-width="1.8"/><text x="1450" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">act</text><text x="1450" y="174" font-size="12" text-anchor="middle" fill="#60717E">raise the request</text>
+<rect x="1565" y="130" width="150" height="58" rx="8" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.8"/><text x="1640" y="155" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">finalize</text><text x="1640" y="174" font-size="12" text-anchor="middle" fill="#60717E">package + receipt</text>
+<rect x="235" y="310" width="150" height="58" rx="8" fill="#FFFFFF" stroke="#60717E" stroke-width="1.8" stroke-dasharray="6 4"/><text x="310" y="335" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">short_circuit</text><text x="310" y="354" font-size="12" text-anchor="middle" fill="#60717E">fixed reply, no AI</text>
+<rect x="615" y="310" width="150" height="58" rx="8" fill="#FFFFFF" stroke="#60717E" stroke-width="1.8" stroke-dasharray="6 4"/><text x="690" y="335" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">uncovered</text><text x="690" y="354" font-size="12" text-anchor="middle" fill="#60717E">refuse + route</text>
+<rect x="1110" y="310" width="150" height="58" rx="8" fill="#FBF1DC" stroke="#9A6200" stroke-width="1.8"/><text x="1185" y="335" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">repair</text><text x="1185" y="354" font-size="12" text-anchor="middle" fill="#60717E">fix it, once</text>
+<rect x="1290" y="310" width="150" height="58" rx="8" fill="#FFFFFF" stroke="#60717E" stroke-width="1.8" stroke-dasharray="6 4"/><text x="1365" y="335" font-size="15" font-weight="600" text-anchor="middle" fill="#15202B">safe_fallback</text><text x="1365" y="354" font-size="12" text-anchor="middle" fill="#60717E">safe message</text>
+<text x="45" y="590" font-size="13" font-weight="600" fill="#15202B">Key</text>
+<rect x="45" y="604" width="28" height="18" rx="4" fill="#FBF1DC" stroke="#9A6200" stroke-width="1.6"/><text x="83" y="618" font-size="13" fill="#15202B">a model call</text>
+<rect x="275" y="604" width="28" height="18" rx="4" fill="#E3F1EF" stroke="#0B6E69" stroke-width="1.6"/><text x="313" y="618" font-size="13" fill="#15202B">plain code, no model</text>
+<rect x="505" y="604" width="28" height="18" rx="4" fill="#E9EFF5" stroke="#17324D" stroke-width="1.6"/><text x="543" y="618" font-size="13" fill="#15202B">a supplied tool</text>
+<rect x="735" y="604" width="28" height="18" rx="4" fill="#FFFFFF" stroke="#60717E" stroke-width="1.6" stroke-dasharray="6 4"/><text x="773" y="618" font-size="13" fill="#15202B">early exit or fallback</text>
+<path d="M980,613 L1030,613" stroke="#15202B" stroke-width="1.6" marker-end="url(#a)"/><text x="1040" y="618" font-size="13" fill="#15202B">always</text><path d="M1110,613 L1160,613" stroke="#15202B" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)"/><text x="1170" y="618" font-size="13" fill="#15202B">decided by a check</text>
+<text x="45" y="652" font-size="13" fill="#60717E">Early exits skip everything after them: a pure greeting or another customer's data (door guard), a greeting or off-topic question (scope + intent), an unknown customer (fetch the account).</text><text x="45" y="672" font-size="13" fill="#60717E">The model writes the reply but never decides: the rules engine decides, and plain code checks the model's work before anything reaches the customer.</text>
+<text x="45" y="702" font-size="12" fill="#60717E">Drawn from the compiled LangGraph by scripts/workflow_diagram.py; a test fails if this picture and the real graph ever disagree.</text>
+</svg>

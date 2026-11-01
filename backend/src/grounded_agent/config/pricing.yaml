@@ -1,0 +1,10 @@
+# USD per 1M tokens, keyed by the model part of the provider string (after "provider:").
+# Indicative public list prices; edit for your provider/contract. Unknown models cost 0
+# and are flagged in the response meta as unpriced.
+gpt-4o-mini: {input: 0.15, output: 0.60}
+gpt-4o-mini-2024-07-18: {input: 0.15, output: 0.60}
+gpt-4.1-mini: {input: 0.40, output: 1.60}
+gpt-4.1: {input: 2.00, output: 8.00}
+gpt-4o: {input: 2.50, output: 10.00}
+gpt-5: {input: 1.25, output: 10.00}
+gpt-5-2025-08-07: {input: 1.25, output: 10.00}

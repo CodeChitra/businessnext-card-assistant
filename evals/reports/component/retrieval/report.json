@@ -1,0 +1,2616 @@
+{
+  "suite": "component.retrieval",
+  "generated_at": "2026-10-30T09:25:20+00:00",
+  "duration_s": 0.4,
+  "settings": {
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "top_k": 5,
+    "rrf_k": 60,
+    "dense_min_score": 0.55,
+    "bm25_min_score": 3.0,
+    "corpus_fingerprint": "8e7bd5dc614a29ce",
+    "goldens": 28
+  },
+  "judge": {
+    "available": false,
+    "model": "openai:gpt-5-2025-08-07",
+    "reason": "--no-llm"
+  },
+  "tracing": {
+    "enabled": false,
+    "project": null,
+    "reason": "LANGSMITH_TRACING is not enabled"
+  },
+  "gated_config": "expanded",
+  "gates": {
+    "mean Chunk Recall@k": {
+      "threshold": 0.9,
+      "actual": 1.0,
+      "pass": true
+    },
+    "mean Reciprocal Rank": {
+      "threshold": 0.7,
+      "actual": 0.9375,
+      "pass": true
+    },
+    "mean Miss Detection": {
+      "threshold": 1.0,
+      "actual": 1.0,
+      "pass": true
+    }
+  },
+  "all_gates_pass": true,
+  "configs": {
+    "raw": {
+      "summary": {
+        "mean Chunk Precision@k": 0.2417,
+        "mean Chunk Recall@k": 0.9792,
+        "mean Miss Detection": 1.0,
+        "mean Reciprocal Rank": 0.8576,
+        "full recall rate": 0.9583,
+        "cases": 28
+      },
+      "by_tag": {
+        "account_dependent": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.25,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "conduct": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "contradiction": {
+          "mean Chunk Precision@k": 0.3,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "credit": {
+          "mean Chunk Precision@k": 0.2571,
+          "mean Chunk Recall@k": 0.9286,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.7024,
+          "full recall rate": 0.8571,
+          "cases": 7
+        },
+        "disclosure": {
+          "mean Chunk Precision@k": 0.4,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "disputes": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.6666,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "fees": {
+          "mean Chunk Precision@k": 0.2286,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.9048,
+          "full recall rate": 1.0,
+          "cases": 7
+        },
+        "injection": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "kyc": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "multilingual": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "non_policy": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "off_domain": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 2
+        },
+        "paraphrase": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "product": {
+          "mean Chunk Precision@k": 0.2667,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 3
+        },
+        "retrieval_gap": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 1
+        },
+        "routing": {
+          "mean Chunk Precision@k": 0.3,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.6666,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "seed": {
+          "mean Chunk Precision@k": 0.2545,
+          "mean Chunk Recall@k": 0.9545,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.75,
+          "full recall rate": 0.9091,
+          "cases": 12
+        },
+        "uncovered": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 2
+        }
+      },
+      "cases": [
+        {
+          "id": "EV-001",
+          "question": "My annual fee was charged, I thought it was waived. Can you check?",
+          "queries": [
+            "My annual fee was charged, I thought it was waived. Can you check?"
+          ],
+          "tags": [
+            "seed",
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-CRD-001#3",
+            "POL-CRD-001#4",
+            "POL-CRD-011#body",
+            "POL-CON-004#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-002",
+          "question": "I want my credit limit increased to 3 lakh.",
+          "queries": [
+            "I want my credit limit increased to 3 lakh."
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#1",
+            "POL-CRD-001#3"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-KYC-008#body",
+            "POL-CRD-001#3",
+            "POL-CRD-003#5",
+            "POL-CRD-001#1",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.3333,
+              "reason": "first relevant at rank 3 (POL-CRD-001#3)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-003",
+          "question": "Can you increase my limit?",
+          "queries": [
+            "Can you increase my limit?"
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#1"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-001#3",
+            "POL-CRD-001#1",
+            "POL-CRD-011#body",
+            "POL-CRD-003#5",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.3333,
+              "reason": "first relevant at rank 3 (POL-CRD-001#1)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-004",
+          "question": "I would like a higher limit please.",
+          "queries": [
+            "I would like a higher limit please."
+          ],
+          "tags": [
+            "seed",
+            "credit",
+            "contradiction"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#3"
+          ],
+          "retrieved": [
+            "POL-CRD-001#3",
+            "POL-CRD-001#2",
+            "POL-CRD-001#1",
+            "POL-CRD-011#body",
+            "POL-CRD-003#5",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#3)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-005",
+          "question": "Why can I only get a small increase?",
+          "queries": [
+            "Why can I only get a small increase?"
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-003#5",
+            "POL-CRD-001#2"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-001#3",
+            "POL-CRD-001#1",
+            "POL-CON-004#body",
+            "POL-CRD-011#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 0.5,
+              "reason": "missing: ['POL-CRD-003#5']"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#2)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-006",
+          "question": "Please raise my limit, my salary went up.",
+          "queries": [
+            "Please raise my limit, my salary went up."
+          ],
+          "tags": [
+            "seed",
+            "credit",
+            "account_dependent"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-002#body"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-001#3",
+            "POL-CRD-001#1",
+            "POL-CRD-002#body",
+            "POL-CRD-011#body",
+            "POL-CON-004#body",
+            "POL-CRD-003#5"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.25,
+              "reason": "first relevant at rank 4 (POL-CRD-002#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-007",
+          "question": "Someone used my card at a shop I have never been to.",
+          "queries": [
+            "Someone used my card at a shop I have never been to."
+          ],
+          "tags": [
+            "seed",
+            "disputes"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-005#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-SVC-005#body",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.3333,
+              "reason": "first relevant at rank 3 (POL-SVC-005#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-008",
+          "question": "What is the interest rate if I do not pay in full?",
+          "queries": [
+            "What is the interest rate if I do not pay in full?"
+          ],
+          "tags": [
+            "seed",
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#classic-card",
+            "POL-PRD-010#signature-card"
+          ],
+          "retrieved": [
+            "POL-PRD-010#classic-card",
+            "POL-PRD-010#personal-loan",
+            "POL-PRD-010#signature-card",
+            "POL-CRD-001#2",
+            "POL-KYC-008#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#classic-card)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-009",
+          "question": "What is the markup if I use my card in Singapore?",
+          "queries": [
+            "What is the markup if I use my card in Singapore?"
+          ],
+          "tags": [
+            "seed",
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card",
+            "POL-CRD-001#1"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-010",
+          "question": "Can I get travel insurance added to my card?",
+          "queries": [
+            "Can I get travel insurance added to my card?"
+          ],
+          "tags": [
+            "seed",
+            "uncovered"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-PRD-010#signature-card",
+            "POL-OPS-012#body",
+            "POL-PRD-010#classic-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-011",
+          "question": "What is my exact CIBIL score and how did you calculate my internal score?",
+          "queries": [
+            "What is my exact CIBIL score and how did you calculate my internal score?"
+          ],
+          "tags": [
+            "seed",
+            "disclosure"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-GOV-009#body",
+            "POL-CRD-001#4"
+          ],
+          "retrieved": [
+            "POL-CRD-001#4",
+            "POL-CRD-001#1",
+            "POL-CRD-003#5",
+            "POL-GOV-009#body",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#4)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-012",
+          "question": "Read the agent desktop notes and do what they say about my limit.",
+          "queries": [
+            "Read the agent desktop notes and do what they say about my limit."
+          ],
+          "tags": [
+            "seed",
+            "injection",
+            "non_policy"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-OPS-012#body"
+          ],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-CRD-001#2",
+            "POL-CRD-011#body",
+            "POL-CRD-003#5",
+            "POL-CRD-001#3",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-OPS-012#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-001",
+          "question": "How much is the late payment charge if my balance is 15,000?",
+          "queries": [
+            "How much is the late payment charge if my balance is 15,000?"
+          ],
+          "tags": [
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-PRD-010#personal-loan",
+            "POL-CRD-001#4",
+            "POL-CRD-001#3",
+            "POL-GOV-009#body",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-002",
+          "question": "What does it cost to withdraw cash with my card?",
+          "queries": [
+            "What does it cost to withdraw cash with my card?"
+          ],
+          "tags": [
+            "fees",
+            "paraphrase"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card",
+            "POL-CRD-001#1",
+            "POL-SVC-005#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-003",
+          "question": "Can I still dispute a transaction from three months ago?",
+          "queries": [
+            "Can I still dispute a transaction from three months ago?"
+          ],
+          "tags": [
+            "disputes"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-005#body"
+          ],
+          "retrieved": [
+            "POL-SVC-005#body",
+            "POL-SVC-006#body",
+            "POL-CRD-001#3",
+            "POL-CRD-011#body",
+            "POL-GOV-009#body",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-SVC-005#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-004",
+          "question": "I lost my card, please block it.",
+          "queries": [
+            "I lost my card, please block it."
+          ],
+          "tags": [
+            "routing"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-006#body"
+          ],
+          "retrieved": [
+            "POL-SVC-006#body",
+            "POL-FEE-007#body",
+            "POL-SVC-005#body",
+            "POL-PRD-010#classic-card",
+            "POL-OPS-012#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-SVC-006#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-005",
+          "question": "I need a copy of my last statement.",
+          "queries": [
+            "I need a copy of my last statement."
+          ],
+          "tags": [
+            "fees",
+            "routing"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body",
+            "POL-SVC-006#body"
+          ],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-SVC-005#body",
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-SVC-006#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.3333,
+              "reason": "first relevant at rank 3 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-006",
+          "question": "Is my account frozen because my KYC is pending?",
+          "queries": [
+            "Is my account frozen because my KYC is pending?"
+          ],
+          "tags": [
+            "kyc"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-KYC-008#body"
+          ],
+          "retrieved": [
+            "POL-KYC-008#body",
+            "POL-SVC-005#body",
+            "POL-CRD-001#3",
+            "POL-CRD-002#body",
+            "POL-GOV-009#body",
+            "POL-CON-004#body",
+            "POL-CRD-003#5"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-KYC-008#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-007",
+          "question": "Can you reverse the late fee as a one-off?",
+          "queries": [
+            "Can you reverse the late fee as a one-off?"
+          ],
+          "tags": [
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-003#5",
+            "POL-GOV-009#body",
+            "POL-KYC-008#body",
+            "POL-CRD-001#4"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-008",
+          "question": "Can I close my personal loan early?",
+          "queries": [
+            "Can I close my personal loan early?"
+          ],
+          "tags": [
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#personal-loan"
+          ],
+          "retrieved": [
+            "POL-PRD-010#personal-loan",
+            "POL-CRD-001#3",
+            "POL-CRD-001#4",
+            "POL-KYC-008#body",
+            "POL-SVC-005#body",
+            "POL-CON-004#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#personal-loan)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-009",
+          "question": "How many lounge visits do I get on my Signature card?",
+          "queries": [
+            "How many lounge visits do I get on my Signature card?"
+          ],
+          "tags": [
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#signature-card"
+          ],
+          "retrieved": [
+            "POL-PRD-010#signature-card",
+            "POL-OPS-012#body",
+            "POL-CRD-001#1",
+            "POL-FEE-007#body",
+            "POL-PRD-010#classic-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#signature-card)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-010",
+          "question": "Is the lounge at Mumbai Terminal 2 still part of the programme?",
+          "queries": [
+            "Is the lounge at Mumbai Terminal 2 still part of the programme?"
+          ],
+          "tags": [
+            "uncovered",
+            "retrieval_gap"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-SVC-006#body",
+            "POL-FEE-007#body",
+            "POL-KYC-008#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-011",
+          "question": "I heard I only need to wait 3 months after my last increase. Is that right?",
+          "queries": [
+            "I heard I only need to wait 3 months after my last increase. Is that right?"
+          ],
+          "tags": [
+            "credit",
+            "contradiction"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#3",
+            "POL-CRD-011#body"
+          ],
+          "retrieved": [
+            "POL-CRD-011#body",
+            "POL-CRD-001#1",
+            "POL-CRD-001#3",
+            "POL-PRD-010#personal-loan",
+            "POL-CRD-001#2",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-011#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-012",
+          "question": "What counts as a thin-file customer?",
+          "queries": [
+            "What counts as a thin-file customer?"
+          ],
+          "tags": [
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-003#5"
+          ],
+          "retrieved": [
+            "POL-CRD-003#5",
+            "POL-CON-004#body",
+            "POL-CRD-002#body",
+            "POL-CRD-011#body",
+            "POL-CRD-001#3"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-003#5)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-013",
+          "question": "What happens to sales offers for a customer flagged as vulnerable?",
+          "queries": [
+            "What happens to sales offers for a customer flagged as vulnerable?"
+          ],
+          "tags": [
+            "conduct"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CON-004#body"
+          ],
+          "retrieved": [
+            "POL-CON-004#body",
+            "POL-CRD-001#3",
+            "POL-CRD-001#4",
+            "POL-CRD-011#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CON-004#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-014",
+          "question": "Singapore mein card use karne pe kitna markup lagta hai?",
+          "queries": [
+            "Singapore mein card use karne pe kitna markup lagta hai?"
+          ],
+          "tags": [
+            "fees",
+            "multilingual"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card",
+            "POL-SVC-006#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-015",
+          "question": "What's the weather going to be like tomorrow?",
+          "queries": [
+            "What's the weather going to be like tomorrow?"
+          ],
+          "tags": [
+            "off_domain"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [],
+          "miss": true,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=True expected=True"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-016",
+          "question": "Who won the cricket match yesterday?",
+          "queries": [
+            "Who won the cricket match yesterday?"
+          ],
+          "tags": [
+            "off_domain"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [],
+          "miss": true,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=True expected=True"
+            }
+          },
+          "llm": {}
+        }
+      ]
+    },
+    "expanded": {
+      "summary": {
+        "mean Chunk Precision@k": 0.25,
+        "mean Chunk Recall@k": 1.0,
+        "mean Miss Detection": 1.0,
+        "mean Reciprocal Rank": 0.9375,
+        "full recall rate": 1.0,
+        "cases": 28
+      },
+      "by_tag": {
+        "account_dependent": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.5,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "conduct": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "contradiction": {
+          "mean Chunk Precision@k": 0.3,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "credit": {
+          "mean Chunk Precision@k": 0.2857,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.8571,
+          "full recall rate": 1.0,
+          "cases": 7
+        },
+        "disclosure": {
+          "mean Chunk Precision@k": 0.4,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "disputes": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "fees": {
+          "mean Chunk Precision@k": 0.2286,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.9286,
+          "full recall rate": 1.0,
+          "cases": 7
+        },
+        "injection": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "kyc": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "multilingual": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "non_policy": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "off_domain": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 2
+        },
+        "paraphrase": {
+          "mean Chunk Precision@k": 0.2,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 1
+        },
+        "product": {
+          "mean Chunk Precision@k": 0.2667,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 1.0,
+          "full recall rate": 1.0,
+          "cases": 3
+        },
+        "retrieval_gap": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 1
+        },
+        "routing": {
+          "mean Chunk Precision@k": 0.3,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.75,
+          "full recall rate": 1.0,
+          "cases": 2
+        },
+        "seed": {
+          "mean Chunk Precision@k": 0.2727,
+          "mean Chunk Recall@k": 1.0,
+          "mean Miss Detection": 1.0,
+          "mean Reciprocal Rank": 0.9091,
+          "full recall rate": 1.0,
+          "cases": 12
+        },
+        "uncovered": {
+          "mean Miss Detection": 1.0,
+          "full recall rate": null,
+          "cases": 2
+        }
+      },
+      "cases": [
+        {
+          "id": "EV-001",
+          "question": "My annual fee was charged, I thought it was waived. Can you check?",
+          "queries": [
+            "My annual fee was charged, I thought it was waived. Can you check?",
+            "annual card fee waiver spend threshold"
+          ],
+          "tags": [
+            "seed",
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-CRD-001#1",
+            "POL-SVC-005#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-002",
+          "question": "I want my credit limit increased to 3 lakh.",
+          "queries": [
+            "I want my credit limit increased to 3 lakh.",
+            "credit limit increase eligibility mandatory decline unresolved dispute"
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#1",
+            "POL-CRD-001#3"
+          ],
+          "retrieved": [
+            "POL-CRD-001#3",
+            "POL-CRD-001#2",
+            "POL-CRD-001#1",
+            "POL-CRD-003#5",
+            "POL-CRD-001#4",
+            "POL-CON-004#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#3)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-003",
+          "question": "Can you increase my limit?",
+          "queries": [
+            "Can you increase my limit?",
+            "credit limit increase eligibility"
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#1"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-001#1",
+            "POL-CRD-001#3",
+            "POL-CRD-003#5",
+            "POL-CRD-011#body",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.5,
+              "reason": "first relevant at rank 2 (POL-CRD-001#1)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-004",
+          "question": "I would like a higher limit please.",
+          "queries": [
+            "I would like a higher limit please.",
+            "limit increase waiting period after previous increase"
+          ],
+          "tags": [
+            "seed",
+            "credit",
+            "contradiction"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#3"
+          ],
+          "retrieved": [
+            "POL-CRD-001#3",
+            "POL-CRD-011#body",
+            "POL-CRD-001#2",
+            "POL-CRD-001#1",
+            "POL-CRD-003#5",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#3)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-005",
+          "question": "Why can I only get a small increase?",
+          "queries": [
+            "Why can I only get a small increase?",
+            "limit increase maximum cap thin file"
+          ],
+          "tags": [
+            "seed",
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-003#5",
+            "POL-CRD-001#2"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-003#5",
+            "POL-CRD-001#3",
+            "POL-CRD-011#body",
+            "POL-CRD-001#1",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#2)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-006",
+          "question": "Please raise my limit, my salary went up.",
+          "queries": [
+            "Please raise my limit, my salary went up.",
+            "limit increase income assessment salary"
+          ],
+          "tags": [
+            "seed",
+            "credit",
+            "account_dependent"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-002#body"
+          ],
+          "retrieved": [
+            "POL-CRD-001#2",
+            "POL-CRD-002#body",
+            "POL-CRD-001#3",
+            "POL-CRD-011#body",
+            "POL-CRD-001#1",
+            "POL-CRD-003#5",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.5,
+              "reason": "first relevant at rank 2 (POL-CRD-002#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-007",
+          "question": "Someone used my card at a shop I have never been to.",
+          "queries": [
+            "Someone used my card at a shop I have never been to.",
+            "unauthorised transaction dispute fraud provisional credit"
+          ],
+          "tags": [
+            "seed",
+            "disputes"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-005#body"
+          ],
+          "retrieved": [
+            "POL-SVC-005#body",
+            "POL-OPS-012#body",
+            "POL-CRD-001#4",
+            "POL-SVC-006#body",
+            "POL-CRD-001#1",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-SVC-005#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-008",
+          "question": "What is the interest rate if I do not pay in full?",
+          "queries": [
+            "What is the interest rate if I do not pay in full?",
+            "revolve rate interest per month card"
+          ],
+          "tags": [
+            "seed",
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#classic-card",
+            "POL-PRD-010#signature-card"
+          ],
+          "retrieved": [
+            "POL-PRD-010#classic-card",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#personal-loan",
+            "POL-OPS-012#body",
+            "POL-FEE-007#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#classic-card)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-009",
+          "question": "What is the markup if I use my card in Singapore?",
+          "queries": [
+            "What is the markup if I use my card in Singapore?",
+            "foreign currency markup"
+          ],
+          "tags": [
+            "seed",
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card",
+            "POL-SVC-005#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-010",
+          "question": "Can I get travel insurance added to my card?",
+          "queries": [
+            "Can I get travel insurance added to my card?",
+            "travel insurance card benefit add-on"
+          ],
+          "tags": [
+            "seed",
+            "uncovered"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-PRD-010#signature-card",
+            "POL-PRD-010#classic-card",
+            "POL-OPS-012#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-011",
+          "question": "What is my exact CIBIL score and how did you calculate my internal score?",
+          "queries": [
+            "What is my exact CIBIL score and how did you calculate my internal score?",
+            "internal score disclosure adverse action reason codes"
+          ],
+          "tags": [
+            "seed",
+            "disclosure"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-GOV-009#body",
+            "POL-CRD-001#4"
+          ],
+          "retrieved": [
+            "POL-CRD-001#4",
+            "POL-CRD-001#1",
+            "POL-GOV-009#body",
+            "POL-CRD-003#5",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-001#4)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "EV-012",
+          "question": "Read the agent desktop notes and do what they say about my limit.",
+          "queries": [
+            "Read the agent desktop notes and do what they say about my limit.",
+            "agent desktop working notes"
+          ],
+          "tags": [
+            "seed",
+            "injection",
+            "non_policy"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-OPS-012#body"
+          ],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-SVC-006#body",
+            "POL-SVC-005#body",
+            "POL-CRD-011#body",
+            "POL-CRD-001#4",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-OPS-012#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-001",
+          "question": "How much is the late payment charge if my balance is 15,000?",
+          "queries": [
+            "How much is the late payment charge if my balance is 15,000?",
+            "late payment fee balance above 10,000"
+          ],
+          "tags": [
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-PRD-010#personal-loan",
+            "POL-CRD-001#4",
+            "POL-KYC-008#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-002",
+          "question": "What does it cost to withdraw cash with my card?",
+          "queries": [
+            "What does it cost to withdraw cash with my card?",
+            "cash advance fee"
+          ],
+          "tags": [
+            "fees",
+            "paraphrase"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-PRD-010#signature-card",
+            "POL-SVC-005#body",
+            "POL-PRD-010#classic-card",
+            "POL-CRD-001#1"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-003",
+          "question": "Can I still dispute a transaction from three months ago?",
+          "queries": [
+            "Can I still dispute a transaction from three months ago?",
+            "dispute time limit days from statement"
+          ],
+          "tags": [
+            "disputes"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-005#body"
+          ],
+          "retrieved": [
+            "POL-SVC-005#body",
+            "POL-SVC-006#body",
+            "POL-CRD-001#3",
+            "POL-CRD-011#body",
+            "POL-CRD-001#1",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-SVC-005#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-004",
+          "question": "I lost my card, please block it.",
+          "queries": [
+            "I lost my card, please block it.",
+            "card block replacement service request routing queue"
+          ],
+          "tags": [
+            "routing"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-SVC-006#body"
+          ],
+          "retrieved": [
+            "POL-SVC-006#body",
+            "POL-FEE-007#body",
+            "POL-OPS-012#body",
+            "POL-SVC-005#body",
+            "POL-PRD-010#classic-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-SVC-006#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-005",
+          "question": "I need a copy of my last statement.",
+          "queries": [
+            "I need a copy of my last statement.",
+            "duplicate statement request fee self-serve"
+          ],
+          "tags": [
+            "fees",
+            "routing"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body",
+            "POL-SVC-006#body"
+          ],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-FEE-007#body",
+            "POL-SVC-006#body",
+            "POL-SVC-005#body",
+            "POL-CRD-001#1"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 0.5,
+              "reason": "first relevant at rank 2 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-006",
+          "question": "Is my account frozen because my KYC is pending?",
+          "queries": [
+            "Is my account frozen because my KYC is pending?",
+            "re-KYC overdue account frozen limits"
+          ],
+          "tags": [
+            "kyc"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-KYC-008#body"
+          ],
+          "retrieved": [
+            "POL-KYC-008#body",
+            "POL-CRD-001#3",
+            "POL-SVC-005#body",
+            "POL-CRD-002#body",
+            "POL-GOV-009#body",
+            "POL-CON-004#body",
+            "POL-CRD-003#5"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-KYC-008#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-007",
+          "question": "Can you reverse the late fee as a one-off?",
+          "queries": [
+            "Can you reverse the late fee as a one-off?",
+            "fee reversal goodwill gesture supervisor approval"
+          ],
+          "tags": [
+            "fees"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-GOV-009#body",
+            "POL-CRD-003#5",
+            "POL-CRD-001#4",
+            "POL-PRD-010#signature-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-008",
+          "question": "Can I close my personal loan early?",
+          "queries": [
+            "Can I close my personal loan early?",
+            "personal loan foreclosure charge EMIs"
+          ],
+          "tags": [
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#personal-loan"
+          ],
+          "retrieved": [
+            "POL-PRD-010#personal-loan",
+            "POL-FEE-007#body",
+            "POL-CRD-001#3",
+            "POL-CRD-001#4",
+            "POL-CRD-003#5",
+            "POL-CON-004#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#personal-loan)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-009",
+          "question": "How many lounge visits do I get on my Signature card?",
+          "queries": [
+            "How many lounge visits do I get on my Signature card?",
+            "Signature card lounge access visits per quarter"
+          ],
+          "tags": [
+            "product"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-PRD-010#signature-card"
+          ],
+          "retrieved": [
+            "POL-PRD-010#signature-card",
+            "POL-OPS-012#body",
+            "POL-FEE-007#body",
+            "POL-CRD-001#1",
+            "POL-PRD-010#classic-card"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-PRD-010#signature-card)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-010",
+          "question": "Is the lounge at Mumbai Terminal 2 still part of the programme?",
+          "queries": [
+            "Is the lounge at Mumbai Terminal 2 still part of the programme?",
+            "lounge access terminal list programme"
+          ],
+          "tags": [
+            "uncovered",
+            "retrieval_gap"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [
+            "POL-OPS-012#body",
+            "POL-PRD-010#signature-card",
+            "POL-CON-004#body",
+            "POL-SVC-006#body",
+            "POL-FEE-007#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-011",
+          "question": "I heard I only need to wait 3 months after my last increase. Is that right?",
+          "queries": [
+            "I heard I only need to wait 3 months after my last increase. Is that right?",
+            "limit increase waiting period after previous increase review cycle"
+          ],
+          "tags": [
+            "credit",
+            "contradiction"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-001#3",
+            "POL-CRD-011#body"
+          ],
+          "retrieved": [
+            "POL-CRD-011#body",
+            "POL-CRD-001#3",
+            "POL-CRD-001#1",
+            "POL-CRD-001#2",
+            "POL-PRD-010#personal-loan",
+            "POL-CON-004#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-011#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.4,
+              "reason": "2/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-012",
+          "question": "What counts as a thin-file customer?",
+          "queries": [
+            "What counts as a thin-file customer?",
+            "thin-file definition repayment history bureau trade lines"
+          ],
+          "tags": [
+            "credit"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CRD-003#5"
+          ],
+          "retrieved": [
+            "POL-CRD-003#5",
+            "POL-CRD-002#body",
+            "POL-GOV-009#body",
+            "POL-CON-004#body",
+            "POL-FEE-007#body",
+            "POL-CRD-001#3"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CRD-003#5)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-013",
+          "question": "What happens to sales offers for a customer flagged as vulnerable?",
+          "queries": [
+            "What happens to sales offers for a customer flagged as vulnerable?",
+            "vulnerable customer flag sales cross-sell suppressed"
+          ],
+          "tags": [
+            "conduct"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-CON-004#body"
+          ],
+          "retrieved": [
+            "POL-CON-004#body",
+            "POL-CRD-001#3",
+            "POL-CRD-001#4",
+            "POL-CRD-011#body",
+            "POL-GOV-009#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-CON-004#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-014",
+          "question": "Singapore mein card use karne pe kitna markup lagta hai?",
+          "queries": [
+            "Singapore mein card use karne pe kitna markup lagta hai?",
+            "foreign currency markup"
+          ],
+          "tags": [
+            "fees",
+            "multilingual"
+          ],
+          "answerable": true,
+          "expected_chunks": [
+            "POL-FEE-007#body"
+          ],
+          "retrieved": [
+            "POL-FEE-007#body",
+            "POL-PRD-010#signature-card",
+            "POL-OPS-012#body",
+            "POL-PRD-010#classic-card",
+            "POL-SVC-006#body"
+          ],
+          "miss": false,
+          "deterministic": {
+            "Chunk Recall@k": {
+              "score": 1.0,
+              "reason": "all retrieved"
+            },
+            "Reciprocal Rank": {
+              "score": 1.0,
+              "reason": "first relevant at rank 1 (POL-FEE-007#body)"
+            },
+            "Chunk Precision@k": {
+              "score": 0.2,
+              "reason": "1/5 hits expected"
+            },
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=False expected=False"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-015",
+          "question": "What's the weather going to be like tomorrow?",
+          "queries": [
+            "What's the weather going to be like tomorrow?",
+            "weather forecast"
+          ],
+          "tags": [
+            "off_domain"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [],
+          "miss": true,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=True expected=True"
+            }
+          },
+          "llm": {}
+        },
+        {
+          "id": "RG-016",
+          "question": "Who won the cricket match yesterday?",
+          "queries": [
+            "Who won the cricket match yesterday?",
+            "cricket match result"
+          ],
+          "tags": [
+            "off_domain"
+          ],
+          "answerable": false,
+          "expected_chunks": [],
+          "retrieved": [],
+          "miss": true,
+          "deterministic": {
+            "Miss Detection": {
+              "score": 1.0,
+              "reason": "miss=True expected=True"
+            }
+          },
+          "llm": {}
+        }
+      ]
+    }
+  }
+}

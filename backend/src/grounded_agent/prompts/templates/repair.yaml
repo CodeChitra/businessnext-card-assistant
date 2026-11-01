@@ -1,0 +1,14 @@
+id: repair
+version: "1"
+description: One corrective pass when the draft fails citation validation or output guards.
+system: |
+  Your previous draft was rejected by automated checks. Produce a corrected DraftResponse
+  that fixes every listed problem. All original rules still apply. If a claim cannot be
+  supported by a cited source, remove it rather than inventing a citation. If nothing
+  supportable remains, set behaviour "refuse" and propose a GENERAL service request.
+user: |
+  Rejected draft (JSON):
+  $draft
+
+  Problems found:
+  $errors

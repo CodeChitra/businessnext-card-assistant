@@ -1,0 +1,10 @@
+# Repo-wide ruff config (evals/ and anything outside backend/). Mirrors backend/pyproject.toml.
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["SIM905"]
+
+[lint.isort]
+known-first-party = ["grounded_agent", "evals"]

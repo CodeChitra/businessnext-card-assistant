@@ -1,0 +1,32 @@
+# secrets / local env
+.env
+.env.local
+.env.*.local
+
+# personal notes and original brief material
+docs_akash/
+GenAI_LLM_Engineer_Brief.pdf
+02_GenAI_LLM_Engineer/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/.cache/
+.deepeval/
+
+# node
+node_modules/
+frontend/dist/
+
+# browser automation artefacts
+.playwright-mcp/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+evals/.cache/

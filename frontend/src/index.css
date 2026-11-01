@@ -1,0 +1,195 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-serif/400.css';
+@import 'tailwindcss';
+
+/* Design system "Secure card desk" (see DESIGN.md). Components use these names only. */
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+:root {
+  --mist: #f4f7f8;
+  --paper: #ffffff;
+  --sunk: #edf2f4;
+  --line: #d8e1e5;
+  --ink: #15202b;
+  --muted: #5a6a77;
+  --navy: #17324d;
+  --navy-wash: #e9eff5;
+  --teal: #0b6e69;
+  --teal-wash: #e3f1ef;
+  --amber: #9a6200;
+  --amber-wash: #fbf1dc;
+  --red: #b42318;
+  --red-wash: #fdecea;
+  --highlight: #fbe7a1;
+  --on-accent: #ffffff;
+  --scrim: rgb(21 32 43 / 0.32);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --mist: #0c151e;
+  --paper: #121d28;
+  --sunk: #192634;
+  --line: #273746;
+  --ink: #e6edf2;
+  --muted: #9aabb8;
+  --navy: #b9cde3;
+  --navy-wash: #1b2c3e;
+  --teal: #55bdb4;
+  --teal-wash: #12302e;
+  --amber: #e2b05a;
+  --amber-wash: #332710;
+  --red: #f08a7e;
+  --red-wash: #3a1a17;
+  --highlight: #5a4a14;
+  --on-accent: #0c151e;
+  --scrim: rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  /* No default palette: every colour comes from the tokens above. */
+  --color-*: initial;
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
+  --color-sunk: var(--sunk);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-navy: var(--navy);
+  --color-navy-wash: var(--navy-wash);
+  --color-teal: var(--teal);
+  --color-teal-wash: var(--teal-wash);
+  --color-amber: var(--amber);
+  --color-amber-wash: var(--amber-wash);
+  --color-red: var(--red);
+  --color-red-wash: var(--red-wash);
+  --color-highlight: var(--highlight);
+  --color-on-accent: var(--on-accent);
+  --color-scrim: var(--scrim);
+
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'IBM Plex Serif', ui-serif, Georgia, serif;
+
+  /* Radius by purpose: controls, informational panels, conversation surfaces. */
+  --radius-control: 8px;
+  --radius-panel: 12px;
+  --radius-message: 18px;
+
+  --shadow-sheet: 0 12px 40px rgb(12 21 30 / 0.18);
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Base styles live in a layer so utilities (e.g. focus-visible:outline-none) can override them. */
+@layer base {
+  /* The page never scrolls: the app is a fixed-height shell whose only scroller is the
+     conversation. (100dvh follows the mobile browser's toolbar and keyboard.) */
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  @supports (height: 100dvh) {
+    #root {
+      height: 100dvh;
+    }
+  }
+
+  html,
+  body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    margin: 0;
+    background: var(--mist);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .figures {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Sheets slide in to explain where they came from; nothing else moves on its own. */
+@keyframes sheet-from-right {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+@keyframes sheet-from-left {
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.sheet-right {
+  animation: sheet-from-right 200ms var(--ease-standard) both;
+}
+.sheet-left {
+  animation: sheet-from-left 200ms var(--ease-standard) both;
+}
+.fade-in {
+  animation: fade-in 180ms var(--ease-standard) both;
+}
+
+@keyframes highlighter-wipe {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.evidence-mark {
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: inherit;
+  padding: 0.05em 0.15em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: highlighter-wipe 520ms cubic-bezier(0.3, 0, 0, 1) both;
+}
+
+@keyframes status-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.status-pulse {
+  animation: status-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evidence-mark,
+  .status-pulse,
+  .sheet-right,
+  .sheet-left,
+  .fade-in {
+    animation: none;
+  }
+}
